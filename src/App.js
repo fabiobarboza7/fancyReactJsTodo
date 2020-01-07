@@ -1,7 +1,13 @@
 import React from 'react';
 
-function App() {
-  return <div />;
-}
+import Routes from './routes';
+import GlobalStyles from './styles/global';
 
-export default App;
+export default function App() {
+  return (
+    <>
+      <Routes />
+      <GlobalStyles />
+    </>
+  );
+}
