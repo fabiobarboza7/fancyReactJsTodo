@@ -10,7 +10,7 @@ export default function SignIn() {
   return (
     <Form onSubmit={handleSubmit}>
       <Input name="email" type="email" />
-      <Input name="password" type="password" />
+      <Input name="password " type="password" />
       <button type="submit">enviar</button>
     </Form>
   );
