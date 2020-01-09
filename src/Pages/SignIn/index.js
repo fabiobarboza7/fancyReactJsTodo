@@ -13,10 +13,11 @@ export default function SignIn() {
   useEffect(() => {
     setUser(state.user);
 
-    if (user.signed) {
+    if (user && user.signed) {
+      localStorage.setItem('user', JSON.stringify(user));
       history.push('/');
     }
-  }, [state, user, user.signIn]);
+  }, [state.user, user]);
 
   async function handleSubmit(userData) {
     const data = await userLogin(userData);

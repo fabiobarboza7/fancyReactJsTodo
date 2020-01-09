@@ -3,9 +3,7 @@ import { Form, Input } from '@rocketseat/unform';
 // import { Container } from './styles';
 
 export default function SignUp() {
-  function handleSubmit(data) {
-    console.log(data);
-  }
+  function handleSubmit() {}
 
   return (
     <Form onSubmit={handleSubmit}>

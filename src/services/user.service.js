@@ -7,6 +7,6 @@ export const getUsers = async () => {
 
 export const userLogin = async user => {
   const { data } = await axios.post('/sessions', user);
-  console.log(data);
+
   return data;
 };

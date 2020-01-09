@@ -11,7 +11,6 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'USER_SIGNIN':
-      console.log(state, 'signin state action');
       return produce(state, draft => {
         draft.token = action.token;
         draft.id = action.user.id;

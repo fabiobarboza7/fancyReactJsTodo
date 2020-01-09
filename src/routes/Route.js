@@ -9,17 +9,13 @@ export default function RouteWrapper({
 }) {
   const [state] = useContext(Store);
 
-  const { signed } = state;
+  const { signed } = state[0];
 
   if (!signed && isPrivate) {
     return <Redirect to="/register" />;
   }
 
   if (signed && !isPrivate) {
-    return <Redirect to="/" />;
-  }
-
-  if (signed && isPrivate) {
     return <Redirect to="/" />;
   }
 

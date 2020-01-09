@@ -1,5 +1,4 @@
 export const signInRequest = data => {
-  console.log(123132);
   return {
     type: 'USER_SIGNIN',
     user: data.user,
