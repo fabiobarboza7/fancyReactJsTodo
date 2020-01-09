@@ -1,16 +1,32 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Form, Input } from '@rocketseat/unform';
+import { userLogin } from '../../services/user.service';
+import { Store } from '../../store';
+import { signInRequest } from '../../store/modules/user/actions';
+import history from '../../services/history';
 // import { Container } from './styles';
 
 export default function SignIn() {
-  function handleSubmit(data) {
-    console.log(data);
+  const [state, dispatch] = useContext(Store);
+  const [user, setUser] = useState(false);
+
+  useEffect(() => {
+    setUser(state.user);
+
+    if (user.signed) {
+      history.push('/');
+    }
+  }, [state, user, user.signIn]);
+
+  async function handleSubmit(userData) {
+    const data = await userLogin(userData);
+    dispatch(signInRequest(data));
   }
 
   return (
     <Form onSubmit={handleSubmit}>
       <Input name="email" type="email" />
-      <Input name="password " type="password" />
+      <Input name="password" type="password" />
       <button type="submit">enviar</button>
     </Form>
   );

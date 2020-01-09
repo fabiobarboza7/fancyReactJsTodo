@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import { Store } from '../store';
 
 export default function RouteWrapper({
   component: Component,
   isPrivate = false,
   ...rest
 }) {
-  const signed = false;
+  const [state] = useContext(Store);
+
+  const { signed } = state;
 
   if (!signed && isPrivate) {
     return <Redirect to="/register" />;
   }
 
   if (signed && !isPrivate) {
+    return <Redirect to="/" />;
+  }
+
+  if (signed && isPrivate) {
     return <Redirect to="/" />;
   }
 
